@@ -12,9 +12,9 @@
 		copy out=work;
 		run;
 		proc format;
-		<xsl:for-each select="odm:ODM/odm:Study/odm:MetaDataVersion/odm:CodeList"><xsl:if test="@DataType='text'">value $<xsl:value-of select="@OID"/>_ <xsl:for-each select="odm:CodeListItem/odm:Decode">"<xsl:value-of select="../@CodedValue"/>"="<xsl:value-of select="odm:TranslatedText"/>" </xsl:for-each>;
+		<xsl:for-each select="odm:ODM/odm:Study/odm:MetaDataVersion/odm:CodeList"><xsl:if test="@DataType='text'">value $<xsl:value-of select="@OID"/>_ <xsl:for-each select="odm:CodeListItem/odm:Decode">'<xsl:value-of select="../@CodedValue"/>' = '<xsl:value-of select="odm:TranslatedText"/>' </xsl:for-each>;
 			</xsl:if><xsl:if test="@DataType='integer'">value
-			<xsl:value-of select="@OID"/>_ <xsl:for-each select="odm:CodeListItem/odm:Decode"><xsl:choose><xsl:when test="../@CodedValue = 'empty'"></xsl:when><xsl:otherwise><xsl:value-of select="../@CodedValue"/>="<xsl:value-of select="odm:TranslatedText"/>"</xsl:otherwise></xsl:choose></xsl:for-each>;</xsl:if></xsl:for-each>
+			<xsl:value-of select="@OID"/>_ <xsl:for-each select="odm:CodeListItem/odm:Decode"><xsl:choose><xsl:when test="../@CodedValue = 'empty'"></xsl:when><xsl:otherwise><xsl:value-of select="../@CodedValue"/> = '<xsl:value-of select="odm:TranslatedText"/>' </xsl:otherwise></xsl:choose></xsl:for-each>;</xsl:if></xsl:for-each>
 		run;
 		<xsl:for-each select="/odm:ODM/odm:Study/odm:MetaDataVersion/odm:ItemGroupDef">
 			<xsl:variable name="vitemgrouprefOID"><xsl:value-of select="@OID"/></xsl:variable>
