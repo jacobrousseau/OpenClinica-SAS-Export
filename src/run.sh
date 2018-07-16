@@ -20,7 +20,7 @@ fi
 INPUT_FILE_NAME=$1;
 
 echo -e 'Running ...\n'
-java -cp ./saxon-8.7.jar net.sf.saxon.Transform $INPUT_FILE_NAME xml_convert_sas_map.xsl | xmllint --format - > SAS_MAP.xml
-java -cp ./saxon-8.7.jar net.sf.saxon.Transform $INPUT_FILE_NAME xml_convert_sas_data.xsl | xmllint --format - > SAS_DATA.xml
-java -cp ./saxon-8.7.jar net.sf.saxon.Transform $INPUT_FILE_NAME xml_convert_sas_format.xsl > SAS_FORMAT.sas
+java -cp ./saxon-8.7.jar net.sf.saxon.Transform $INPUT_FILE_NAME xml_convert_sas_map.xsl | xmllint --format - > ($INPUT_FILE_NAME)_SAS_MAP.xml
+java -cp ./saxon-8.7.jar net.sf.saxon.Transform $INPUT_FILE_NAME xml_convert_sas_data.xsl | xmllint --format - > ($INPUT_FILE_NAME)_SAS_DATA.xml
+java -cp ./saxon-8.7.jar net.sf.saxon.Transform $INPUT_FILE_NAME xml_convert_sas_format.xsl > ($INPUT_FILE_NAME)_SAS_FORMAT.sas
 echo 'Finished'
